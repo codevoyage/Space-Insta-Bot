@@ -33,7 +33,8 @@ def get_picture_nasa():
     response = requests.get(
         nasa_apod_url,
         params={'api_key': 'gqpGF2NFxRqYlMxbwwMRmTFyi92Qo0h9k1tNByNP',
-                'hd': True
+                'hd': True,
+                # 'date':'2019-02-13'
                 }
     )
     json_data = json.loads(response.text)
@@ -49,15 +50,14 @@ def post_picture_insta():
 
     explanation = unidecode(explanation)
 
-    credits = " credits: " + author
-
-    # caption = cleanExplanation(explanation) + credits + createHashTags()
+    if isinstance(author, basestring):
+        credits = " credits: " + author
+    else:
+        credits = ""
 
     caption = explanation + credits + createHashTags()
 
-
     command = "instapy -u daily_space_photos -p newspace -f " + image_url + " -t '" + caption + "'"
-
 
     os.system(command)
     print("Posted picture of the day")
