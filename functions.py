@@ -51,10 +51,13 @@ def post_picture_insta():
 
     credits = " credits: " + author
 
-    caption = cleanExplanation(explanation) + credits + createHashTags()
+    # caption = cleanExplanation(explanation) + credits + createHashTags()
+
+    caption = explanation + credits + createHashTags()
+
 
     command = "instapy -u daily_space_photos -p newspace -f " + image_url + " -t '" + caption + "'"
 
-    # print(command)
+    print(command)
 
-    os.system(command)
+    # os.system(command)
