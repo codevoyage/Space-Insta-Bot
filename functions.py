@@ -57,7 +57,8 @@ def post_picture_insta():
 
     caption = explanation + credits + createHashTags()
 
-    command = "instapy -u daily_space_photos -p newspace -f " + image_url + " -t '" + caption + "'"
+    command = "instapy -u daily_space_photos -p newspace -f " + image_url + " -t \"" + caption + "\""
+
 
     os.system(command)
     print("Posted picture of the day")
