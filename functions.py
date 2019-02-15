@@ -50,7 +50,7 @@ def post_picture_insta():
 
     explanation = unidecode(explanation)
 
-    if isinstance(author, basestring):
+    if isinstance(author, str):
         credits = " credits: " + author
     else:
         credits = ""
