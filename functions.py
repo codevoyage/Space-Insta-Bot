@@ -5,13 +5,10 @@ from unidecode import unidecode
 
 
 def createHashTags():
-    hashString = ' '
+    hashtags = " #science #sciencefacts #space #physics #universe #nasa #astronomy" \
+               " #stars #sky #galaxy #cosmos #photography #knowledge #facts"
 
-    hashtags = ["#space", "#photography", "#nasa", "#universe", "#galaxy", "#nightsky", "#spacefacts", "#stars"]
-    for i in range(len(hashtags)):
-        hashString = hashString + " " + hashtags[i]
-
-    return hashString
+    return hashtags
 
 
 def cleanExplanation(explanation):
@@ -58,7 +55,6 @@ def post_picture_insta():
     caption = explanation + credits + createHashTags()
 
     command = "instapy -u daily_space_photos -p newspace -f " + image_url + " -t \"" + caption + "\""
-
 
     os.system(command)
     print("Posted picture of the day")
