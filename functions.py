@@ -31,7 +31,7 @@ def get_picture_nasa():
         nasa_apod_url,
         params={'api_key': 'gqpGF2NFxRqYlMxbwwMRmTFyi92Qo0h9k1tNByNP',
                 'hd': True,
-                # 'date':'2019-02-13'
+                # 'date':'2012-02-16'
                 }
     )
     json_data = json.loads(response.text)
@@ -57,4 +57,4 @@ def post_picture_insta():
     command = "instapy -u daily_space_photos -p newspace -f " + image_url + " -t \"" + caption + "\""
 
     os.system(command)
-    print("Posted picture of the day")
+    print("Ran command to post picture of the day")
