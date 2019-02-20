@@ -60,8 +60,6 @@ def fix_aspect_ratio():
 
     original_aspect_ratio = width / height
 
-    final_image = "photo.jpg"
-
     if original_aspect_ratio <= insta_min_ratio:
         print("Photo is too long, making changes")
         crop_height = width / insta_min_ratio
@@ -69,6 +67,8 @@ def fix_aspect_ratio():
         if extra < height / 4.0:
             box = (0, 0, width, crop_height)  # crops out the extra bottom of the photograph
             final_image = crop_image(original, box)
+        else:
+            print("Photo is way too long, not posting")
     elif insta_max_ratio <= original_aspect_ratio:
         print("Photo is too wide, making changes")
         crop_width = insta_max_ratio * height
@@ -76,6 +76,12 @@ def fix_aspect_ratio():
         if extra < width / 4.0:
             box = (extra / 2.0, 0, width - extra / 2.0, height)  # take off the extra from the sides
             final_image = crop_image(original, box)
+        else:
+            print("Photo is way too wide, not posting")
+
+    else:
+        print("Photo aspect ratio is compatible with instagram")
+        final_image = "photo.jpg"
 
     return final_image
 
@@ -92,8 +98,10 @@ def crop_image(original, box):
 def post_picture_insta(image, caption):
     command = "instapy -u daily_space_photos -p newspace -f" + image + " -t \"" + caption + "\""
     os.system(command)
-    print("Ran command to post picture of the day")
+    # print("Ran command to post picture of the day")
 
 
 def start():
     clean_data()
+
+# TODO: improve error logging to see if the picture was posted or not
