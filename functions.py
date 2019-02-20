@@ -45,7 +45,7 @@ def clean_data():
 
 def createHashTags():
     hashtags = " #science #sciencefacts #space #physics #universe #nasa #astronomy" \
-               " #stars #sky #galaxy #cosmos #photography #knowledge #facts"
+               " #stars #sky #galaxy #cosmos #photography #knowledge #facts #news"
 
     return hashtags
 
